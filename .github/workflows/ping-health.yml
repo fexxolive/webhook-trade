@@ -15,7 +15,7 @@ jobs:
           curl -sS -m 10 \
           -o /dev/null \
           -w "health_status=%{http_code}\n" \
-          https://webhook-relay-zip.onrender.com/health
+          https://webhook-trade-a1vh.onrender.com/health
 
       # ----------- 2) HIT /webhook (PING) -----------
       - name: Hit /webhook (PING)
@@ -23,4 +23,4 @@ jobs:
           curl -sS -m 10 \
           -H "Content-Type: application/json" \
           -d '{"event":"PING"}' \
-          https://webhook-relay-zip.onrender.com/webhook
+          https://webhook-trade-a1vh.onrender.com/webhook
