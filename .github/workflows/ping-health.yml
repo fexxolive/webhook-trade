@@ -1,26 +1,24 @@
 name: Ping Webhook Health
 
-on:
+"on":
   schedule:
-    - cron: "*/5 * * * *"   # every 5 minutes (UTC)
+    - cron: "*/5 * * * *"
   workflow_dispatch:
 
 jobs:
   ping:
     runs-on: ubuntu-latest
     steps:
-      # ----------- 1) HIT /health -----------
       - name: Hit /health
         run: |
           curl -sS -m 10 \
-          -o /dev/null \
-          -w "health_status=%{http_code}\n" \
-          https://webhook-trade-a1vh.onrender.com/health
+            -o /dev/null \
+            -w "health_status=%{http_code}\n" \
+            https://webhook-trade-a1vh.onrender.com/health
 
-      # ----------- 2) HIT /webhook (PING) -----------
-      - name: Hit /webhook (PING)
+      - name: Hit /webhook PING
         run: |
           curl -sS -m 10 \
-          -H "Content-Type: application/json" \
-          -d '{"event":"PING"}' \
-          https://webhook-trade-a1vh.onrender.com/webhook
+            -H "Content-Type: application/json" \
+            -d '{"event":"PING"}' \
+            https://webhook-trade-a1vh.onrender.com/webhook
